@@ -1,0 +1,599 @@
+/* Global reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background: #000;
+}
+
+/* Desktop */
+#desktop {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+/* Wallpaper layer */
+.wallpaper-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wallpaper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wallpaper-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Desktop icons */
+.desktop-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.desktop-icon span {
+  color: white;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  word-wrap: break-word;
+}
+
+/* Windows */
+.window {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  width: 600px;
+  max-width: 90vw;
+  background: #f0f0f0;
+  border: 1px solid #646464;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.window.active {
+  display: flex;
+  z-index: 100;
+}
+
+/* Window title bar */
+.window-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #6495ed, #4169e1);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  cursor: move;
+  user-select: none;
+}
+
+.window-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.window-close {
+  background: #e81123;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.window-close:hover {
+  background: #c50f1f;
+}
+
+/* Window content */
+.window-content {
+  padding: 20px;
+  background: white;
+  overflow-y: auto;
+  max-height: 500px;
+  flex: 1;
+}
+
+.window-content h2 {
+  margin-bottom: 12px;
+  color: #2a51b2;
+  font-size: 20px;
+}
+
+.window-content h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 16px;
+}
+
+.window-content p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.window-content a {
+  color: #2a51b2;
+  text-decoration: none;
+}
+
+.window-content a:hover {
+  text-decoration: underline;
+}
+
+/* Shutdown overlay */
+#shutdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#shutdown-overlay.active {
+  display: flex;
+}
+
+.shutdown-box {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+.shutdown-box h2 {
+  margin-bottom: 12px;
+  color: #2a51b2;
+}
+
+.shutdown-box p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* Taskbar */
+#taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(to bottom, #2a51b2, #1c3a7a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* Start button (XP image-only) */
+#start-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 36px;
+  width: 92px;
+
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#start-button:focus {
+  outline: none;
+}
+
+.start-logo-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* crop white area if present */
+  object-position: left center; /* keep logo + start text visible */
+  border-radius: 4px;
+}
+
+/* Center pinned icons */
+#taskbar-center-icons {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.taskbar-icon {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.taskbar-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* Map each icon to attached images */
+.app-chrome {
+  background-image: url("images/chrome.jpg");
+}
+
+.app-explorer {
+  background-image: url("images/file.jpg");
+}
+
+.app-paint {
+  background-image: url("images/paint.jpg");
+}
+
+/* Taskbar right tray (icons + clock) */
+#taskbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tray icons wrapper */
+#taskbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tray-icon {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: #fff; /* SVG uses currentColor */
+  cursor: default;
+}
+
+.tray-icon svg {
+  display: block;
+}
+
+/* Keep your old network image support (if you still use it anywhere) */
+#taskbar-network {
+  width: 18px;
+  height: 14px;
+  background-image: url("network.png"); /* optional - if you want old icon */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#taskbar-clock {
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Start menu (PERFECT XP STYLE) */
+#start-menu {
+  position: fixed;
+  bottom: 48px;
+  left: 6px;
+  width: 380px;
+  height: 480px;
+  background: #f4f7fb;
+  border: 1px solid #003399;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  z-index: 1500;
+  overflow: hidden;
+}
+
+#start-menu.active {
+  display: flex;
+}
+
+/* TOP HEADER: ONLY Name (no buttons) */
+.start-menu-header {
+  height: 54px;
+  padding: 16px 14px 12px;
+  background: linear-gradient(to right, #0b3d91 0%, #3b75dd 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.start-user-name {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  flex: 1;
+}
+
+/* MAIN BODY: 2 columns */
+.start-menu-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f4f7fb;
+  overflow: hidden;
+}
+
+/* LEFT COLUMN: Big icons + 2-line labels */
+.start-left {
+  background: #fff;
+  border-right: 1px solid #c5d3e6;
+  padding: 8px 4px;
+  overflow-y: auto;
+}
+
+.start-left-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.start-left-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.start-left-text {
+  flex: 1;
+  font-size: 13px;
+}
+
+.start-left-text .item-title {
+  display: block;
+  font-weight: 600;
+  color: #000;
+}
+
+.start-left-text .item-sub {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-top: 1px;
+}
+
+.start-left-item:hover {
+  background: #316ac5;
+  color: #fff;
+}
+
+.start-left-item:hover .item-sub {
+  color: #e5f1ff;
+}
+
+/* RIGHT COLUMN: Folder shortcuts */
+.start-right {
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.start-right-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.start-right-item img {
+  width: 28px;
+  height: 28px;
+}
+
+.start-right-item:hover {
+  background: rgba(49, 106, 197, 0.8);
+  color: #fff;
+}
+
+/* BOTTOM FOOTER: Log Off + Shut Down (side by side) */
+.start-menu-footer {
+  height: 38px;
+  background: linear-gradient(to bottom, #2a51b2, #1c3a7a);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+#start-logoff,
+#start-shutdown {
+  height: 24px;
+  padding: 0 12px;
+  background: linear-gradient(to bottom, #fffbd7, #f2c85c);
+  border: 1px solid #0a2b7c;
+  border-radius: 14px;
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#start-logoff:hover,
+#start-shutdown:hover {
+  filter: brightness(1.05);
+}
+
+#start-logoff:active,
+#start-shutdown:active {
+  transform: translateY(1px);
+}
+
+/* Login screen */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1a4fb5 0, #001428 55%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+#login-box {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 32px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  min-width: 280px;
+  text-align: center;
+}
+
+#login-box h2 {
+  margin-bottom: 8px;
+  color: #2a51b2;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  outline: none;
+  font-size: 14px;
+}
+
+#login-form input:focus {
+  border-color: #2a51b2;
+}
+
+#login-error {
+  min-height: 18px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #e81123;
+}
+
+#login-form button {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  background: #2a51b2;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#login-form button:hover {
+  background: #4169e1;
+}
+
+#login-form button:active {
+  transform: translateY(1px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .window {
+    width: 90vw;
+    top: 50px;
+    left: 5vw;
+  }
+
+  #start-menu {
+    width: 100vw;
+    height: 400px;
+  }
+
+  .start-menu-right {
+    width: 120px;
+  }
+}

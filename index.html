@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shashank Baxi - Windows Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <!-- Sounds -->
+    <audio id="startup-sound" src="startup.mp3" preload="auto"></audio>
+    <audio id="shutdown-sound" src="shutdown.mp3" preload="auto"></audio>
+
+    <!-- Login screen -->
+    <div id="login-screen">
+      <div id="login-box">
+        <h2>Welcome</h2>
+        <p class="login-subtitle">Enter your name to open the desktop.</p>
+        <form id="login-form">
+          <input
+            type="text"
+            id="login-name"
+            placeholder="Your name"
+            autocomplete="off"
+          />
+          <div id="login-error"></div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop">
+      <!-- Wallpaper -->
+      <div class="wallpaper-wrapper">
+        <img src="images/xp.jpg" alt="Wallpaper" class="wallpaper-img" />
+        <div class="wallpaper-text">Created by Shashank Baxi</div>
+      </div>
+
+      <!-- Desktop icons -->
+      <div class="desktop-icons">
+        <div class="desktop-icon" data-window="about">
+          <img src="images/aboutme.jpg" alt="About Me" />
+          <span>About Me</span>
+        </div>
+
+        <div class="desktop-icon" data-window="projects">
+          <img src="images/project.jpg" alt="Projects" />
+          <span>Projects</span>
+        </div>
+
+        <div class="desktop-icon" data-window="contact">
+          <img src="images/contact.jpg" alt="Contact" />
+          <span>Contact</span>
+        </div>
+
+        <div class="desktop-icon" data-window="resume">
+          <img src="images/resume.jpg" alt="Resume" />
+          <span>Resume</span>
+        </div>
+
+        <div class="desktop-icon" data-window="education">
+          <img src="images/education.png" alt="Education" />
+          <span>Education</span>
+        </div>
+
+        <div class="desktop-icon" data-window="certs">
+          <img src="images/certificate.jpg" alt="Certifications" />
+          <span>Certifications &amp; Internship</span>
+        </div>
+      </div>
+
+      <!-- About window -->
+      <div class="window" id="window-about">
+        <div class="window-titlebar">
+          <span class="window-title">About Me - Shashank Baxi</span>
+          <button class="window-close" data-window="about">×</button>
+        </div>
+        <div class="window-content">
+          <h2>About Me</h2>
+          <p>
+            Front-End Developer and B. Tech Computer Science (Data Science)
+            student at Shri Shankaracharya Technical Campus with hands-on
+            experience in building and deploying responsive web applications
+            using HTML, CSS, JavaScript, React.js, and Tailwind CSS. Developed
+            real-world projects including a travel planning website and a
+            React-based e-commerce application with dynamic UI features and
+            state management. Strong focus on clean UI/UX, component-based
+            development, and performance-oriented frontend design. Seeking a
+            trainee or junior front-end role in startup environments to work on
+            real products and grow as a frontend engineer.
+          </p>
+        </div>
+      </div>
+
+      <!-- Projects window -->
+      <div class="window" id="window-projects">
+        <div class="window-titlebar">
+          <span class="window-title">Projects - Shashank Baxi </span>
+          <button class="window-close" data-window="projects">×</button>
+        </div>
+        <div class="window-content">
+          <h2>Projects</h2>
+
+          <h3>Travel Pace Website</h3>
+          <p>
+            Designed and developed a responsive travel website that allows users
+            to explore destinations and plan itineraries interactively.
+            Implemented key features such as destination search, image
+            galleries, and dynamic content updates using vanilla JavaScript.
+            Focused on clean UI/UX design, mobile responsiveness, and user
+            friendly navigation to enhance the overall browsing experience.
+          </p>
+          <a href="https://travel-pace.vercel.app/" target="_blank">
+            View Project
+          </a>
+
+          <h3>DapperCart E-commerce Website</h3>
+          <p>
+            A modern e-commerce platform developed using React.js, JavaScript
+            (ES6+), and CSS3, showcasing 21+ products with advanced filtering
+            and sorting capabilities. Implements React Hooks for state
+            management, local Storage API for cart persistence, and features a
+            complete checkout system with shipping and payment options. Built
+            with Vite and deployed on Vercel for optimal performance.
+          </p>
+          <a href="https://dapper-cart-mauve.vercel.app/" target="_blank">
+            View Project
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact window -->
+      <div class="window" id="window-contact">
+        <div class="window-titlebar">
+          <span class="window-title">Contact - Shashank Baxi</span>
+          <button class="window-close" data-window="contact">×</button>
+        </div>
+        <div class="window-content">
+          <h2>Contact</h2>
+          <p>
+            Email:
+            <a href="mailto:shashankbaxi1@gmail.com">shashankbaxi1@gmail.com</a>
+          </p>
+          <p>Phone: +91 93404 43911</p>
+          <p>
+            LinkedIn:
+            <a
+              href="https://www.linkedin.com/in/shashankbaxi16"
+              target="_blank"
+            >
+              linkedin.com/in/shashankbaxi16
+            </a>
+          </p>
+          <p>
+            GitHub:
+            <a href="https://github.com/shashankbaxi" target="_blank">
+              github.com/shashankbaxi
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Resume window -->
+      <div class="window" id="window-resume">
+        <div class="window-titlebar">
+          <span class="window-title">Resume - Shashank Baxi</span>
+          <button class="window-close" data-window="resume">×</button>
+        </div>
+        <div class="window-content">
+          <h2>Resume</h2>
+          <p>You can view or download my full resume here:</p>
+          <p>
+            <a href="resume-2.pdf" target="_blank">Open Resume (PDF)</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Education window -->
+      <div class="window" id="window-education">
+        <div class="window-titlebar">
+          <span class="window-title">Education - Shashank Baxi</span>
+          <button class="window-close" data-window="education">×</button>
+        </div>
+        <div class="window-content">
+          <h2>Education</h2>
+
+          <h3>B.Tech in Computer Science (Data Science Specialization)</h3>
+          <p>
+            Shri Shankaracharya Technical Campus, Bhilai<br />
+            Expected Graduation: 2026
+          </p>
+          <p>
+            Focus areas: Data Science, Full-stack Web Development, Algorithms,
+            and Software Engineer.
+          </p>
+
+          <h3>Class XII (CBSE)</h3>
+          <p>Neeraj Public School</p>
+        </div>
+      </div>
+
+      <!-- Certifications & Internship window -->
+      <div class="window" id="window-certs">
+        <div class="window-titlebar">
+          <span class="window-title">
+            Certifications &amp; Internship - Shashank Baxi
+          </span>
+          <button class="window-close" data-window="certs">×</button>
+        </div>
+        <div class="window-content">
+          <h2>Certifications</h2>
+
+          <h3>React JS Fundamentals, EdQuest</h3>
+          <p>
+            Certificate:
+            <a
+              href="https://drive.google.com/file/d/1izK9gljLpK7usP_ae9RClAk_Bylxhabj/view?usp=sharing"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+
+          <h3>Deloitte Australia - Data Analytics Job Simulation, Forage</h3>
+          <p>
+            Certificate:
+            <a
+              href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_mq7NgBDGXq73RAxoN_1749535972936_completion_certificate.pdf"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+
+          <h3>
+            Acquiring Data (Level-1 AI Fundamentals of AI ASCEND), Accenture
+          </h3>
+          <p>
+            Certificate:
+            <a
+              href="https://drive.google.com/file/d/1NNEuoC2aVnmBeyK1q0xmU5_rypjrZHXN/view?usp=drive_link"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+
+          <h3>
+            Oracle Cloud Infrastructure 2025 Certified DevOps Professional,
+            Oracle
+          </h3>
+          <p>
+            Certificate:
+            <a
+              href="https://drive.google.com/file/d/1zKO_VB6-7-h2yUNSgwbRNpWudeTqpgym/view?usp=drivesdk"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+
+          <h2>Internship</h2>
+
+          <h3>Web Development Training, Coincent.ai</h3>
+          <p>
+            Built responsive, user-friendly web interfaces using HTML, CSS, and
+            JavaScript, focusing on clean UI and frontend best practices in the
+            TravelPace project.
+          </p>
+          <p>
+            Gained foundational backend knowledge with Node.js, including
+            server-side JavaScript runtime, basic server setup, and simple API
+            creation.
+          </p>
+          <p>
+            This experience strengthened frontend expertise and introduced key
+            backend concepts, preparing for future full-stack development roles.
+          </p>
+          <p>
+            Certificate:
+            <a
+              href="https://drive.google.com/file/d/1v2R_UApmflLVdhwL3eOjudrPfNzmIJeb/view?usp=drivesdk"
+              target="_blank"
+              >View Certificate</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Shutdown overlay -->
+      <div id="shutdown-overlay">
+        <div class="shutdown-box">
+          <h2>Shutting down...</h2>
+          <p>Thank you for visiting the portfolio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="taskbar">
+      <button id="start-button" aria-label="Start">
+        <img src="images/start.png" alt="Start" class="start-logo-img" />
+      </button>
+
+      <!-- Center pinned icons -->
+      <div id="taskbar-center-icons">
+        <button class="taskbar-icon app-chrome" title="Google Chrome"></button>
+        <button
+          class="taskbar-icon app-explorer"
+          title="File Explorer"
+        ></button>
+        <button class="taskbar-icon app-paint" title="Paint"></button>
+      </div>
+
+      <!-- UPDATED: Right tray icons + clock -->
+      <div id="taskbar-right">
+        <!-- Tray icons -->
+        <div id="taskbar-tray">
+          <!-- Keep your existing network div (JS/CSS compatibility) -->
+          <div id="taskbar-network" class="tray-icon" title="Network"></div>
+
+          <!-- Volume -->
+          <div
+            id="taskbar-volume"
+            class="tray-icon"
+            title="Volume"
+            aria-label="Volume"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M3 10v4h4l5 4V6L7 10H3zm13.5 2c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"
+              />
+            </svg>
+          </div>
+
+          <!-- Battery -->
+          <div
+            id="taskbar-battery"
+            class="tray-icon"
+            title="Battery"
+            aria-label="Battery"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M16 7H6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm3 4v2h1v-2h-1z"
+              />
+            </svg>
+          </div>
+
+          <!-- Power -->
+          <div
+            id="taskbar-power"
+            class="tray-icon"
+            title="Power"
+            aria-label="Power"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M11 2h2v10h-2V2zm6.36 3.64-1.41 1.41A7 7 0 1 1 8.05 7.05L6.64 5.64A9 9 0 1 0 17.36 5.64z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Clock -->
+        <div id="taskbar-clock"></div>
+      </div>
+    </div>
+
+    <!-- Start menu (PERFECT XP) -->
+    <div id="start-menu">
+      <!-- TOP HEADER: Fixed name -->
+      <div class="start-menu-header">
+        <span class="start-user-name">Shashank Baxi</span>
+      </div>
+
+      <!-- BODY: 2 COLUMNS -->
+      <div class="start-menu-body">
+        <!-- LEFT: Main sections -->
+        <div class="start-left">
+          <div class="start-left-item" data-window="about">
+            <img src="images/aboutme.jpg" alt="About" />
+            <div class="start-left-text">
+              <span class="item-title">About Me</span>
+              <span class="item-sub">Profile & summary</span>
+            </div>
+          </div>
+          <div class="start-left-item" data-window="projects">
+            <img src="images/project.jpg" alt="Projects" />
+            <div class="start-left-text">
+              <span class="item-title">Projects</span>
+              <span class="item-sub">Travel Pace, DapperCart</span>
+            </div>
+          </div>
+          <div class="start-left-item" data-window="resume">
+            <img src="images/resume.jpg" alt="Resume" />
+            <div class="start-left-text">
+              <span class="item-title">Resume</span>
+              <span class="item-sub">Download CV (PDF)</span>
+            </div>
+          </div>
+          <div class="start-left-item" data-window="education">
+            <img src="images/education.png" alt="Education" />
+            <div class="start-left-text">
+              <span class="item-title">Education</span>
+              <span class="item-sub">B.Tech Computer Science</span>
+            </div>
+          </div>
+          <div class="start-left-item" data-window="certs">
+            <img src="images/certificate.jpg" alt="Certs" />
+            <div class="start-left-text">
+              <span class="item-title">Certifications</span>
+              <span class="item-sub">Courses & internship</span>
+            </div>
+          </div>
+          <div class="start-left-item" data-window="contact">
+            <img src="images/contact.jpg" alt="Contact" />
+            <div class="start-left-text">
+              <span class="item-title">Contact</span>
+              <span class="item-sub">Email & social links</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Quick links (all connected to windows) -->
+        <div class="start-right">
+          <div class="start-right-item" data-window="resume">
+            <img src="images/resume.jpg" alt="Resume" /> <span>My Resume</span>
+          </div>
+          <div class="start-right-item" data-window="projects">
+            <img src="images/project.jpg" alt="Projects" />
+            <span>My Projects</span>
+          </div>
+          <div class="start-right-item" data-window="contact">
+            <img src="images/contact.jpg" alt="Contact" />
+            <span>Contact Info</span>
+          </div>
+          <div class="start-right-item" data-window="about">
+            <img src="images/aboutme.jpg" alt="About" /> <span>About Me</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM FOOTER: Log Off + Shut Down side by side -->
+      <div class="start-menu-footer">
+        <button id="start-logoff">Log Off</button>
+        <button id="start-shutdown">Shut Down</button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
